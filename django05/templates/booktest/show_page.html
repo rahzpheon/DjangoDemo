@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <ul>
+        {% for a in areas %}
+            <li>{{ a.atitle }}</li>
+        {% endfor %}
+    </ul>
+{#    动态生成链接   #}
+    {{ link_str|safe }}
+</body>
+</html>

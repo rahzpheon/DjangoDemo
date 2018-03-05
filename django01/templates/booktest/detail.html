@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>书本内容</title>
+</head>
+<body>
+<h1>{{ book.btitle }}&nbsp;出场角色</h1>
+<ul>
+    {% for hero in herolist %}
+    <li>{{ hero.hname }}--{{ hero.hcomment }}</li>
+    {% empty %}
+    <li>当前没有任何角色。</li>
+    {% endfor %}
+</ul>
+</body>
+</html>

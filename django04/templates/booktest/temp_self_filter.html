@@ -1,0 +1,18 @@
+{% load my_filter %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义模板</title>
+</head>
+<body>
+{# 调用自定义过滤器,显示id为偶数的book #}
+<ul>
+    {% for book in books %}
+        {% if  book.id|mod  %}
+        <li>{{ book.btitle }}</li>
+        {% endif %}
+    {% endfor %}
+</ul>
+</body>
+</html>

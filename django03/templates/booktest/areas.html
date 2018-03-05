@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>地区</title>
+</head>
+<body>
+<h1>{{ father.atitle }}</h1>
+<h3>{{ area.atitle }}</h3>
+
+<ul>
+    {% for area in son %}
+    <li>{{ area.atitle }}</li>
+    {% empty %}
+    没有子地区
+    {% endfor %}
+</ul>
+</body>
+</html>

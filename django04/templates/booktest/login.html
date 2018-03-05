@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登陆</title>
+    <script src="/static/js/jquery-1.12.4.min.js"></script>
+{#    点击事件:发送登陆的ajax请求   #}
+    <script>
+
+        $(function () {
+
+            $('#btn').click(function () {
+{#                alert($('#username').val());#}
+{#                var content1 = {'username' : $('#username').val(), #}
+{#                    'csrfmiddlewaretoken':$('[name="csrfmiddlewaretoken"]').val()};#}
+{#                $.ajax({#}
+{#                    url:'/login_check',#}
+{#                    type: 'POST',#}
+{#                    data:content1,#}
+{#                    dataType: 'json',#}
+{#                }).done(function (data) {#}
+{#                    alert(data);#}
+{#                    if (data['b'] == 1){#}
+{#                    location.href = '/index'#}
+{#                    } else {alert('登陆失败.')}#}
+{#                })#}
+{#                获取用户名与验证码与 csrfmiddlewaretoken, 在ajax请求中要手动发送！！ #}
+                var content1 = {'username' : $('#username').val(),
+                    'yzm':$('#verifyCode').val(),
+                    'csrfmiddlewaretoken':$('[name="csrfmiddlewaretoken"]').val()};
+                $.post('/login_check', content1, function(data){
+                    if (data['b'] == 1){
+                    location.href = '/index'
+                    } else if (data['b'] == 2){
+                        $('#err_msg').css({'display':'block','color':'red'})
+                    }
+                    else {alert('登陆失败.')};
+                });
+            })
+        })
+
+{#        验证码:看不清换一个功能#}
+        $(function(){
+        $('#change').css('cursor','pointer').click(function() {
+            $('#yzm').attr('src',$('#yzm').attr('src')+1)
+        });
+    });
+    </script>
+
+
+</head>
+<body>
+    {% csrf_token %}
+    用户名:<input type="text" id="username" placeholder="请输入用户名"><br>
+    验证码:<input type="text" id="verifyCode"><img id="yzm" src="/verify_code/1"/>
+          <span id="change">看不清，换一个</span><br>
+    <input type="button" id="btn" value="登陆"><span id="err_msg" style="display: none">验证码输入错误!</span>
+</body>
+</html>

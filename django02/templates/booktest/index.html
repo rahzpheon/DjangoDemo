@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>索引页面</title>
+</head>
+<body>
+<a href="/create">添加</a>
+<ul>
+    {% for book in booklist %}
+    <li>{{ book.btitle }}--<a href="/delete{{ book.id }}">删除</a></li>
+    {% endfor %}
+</ul>
+</body>
+</html>

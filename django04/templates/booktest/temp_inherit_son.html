@@ -1,0 +1,17 @@
+{% extends "booktest/temp_inherit_father.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模板继承——子模板</title>
+</head>
+<body>
+     <h1>在父模板预留空间外的内容无效.</h1>
+     {% block block1 %}
+         子模板改写
+    {% endblock %}
+    {% block block2 %}
+         这里是block2的默认内容
+    {% endblock %}
+</body>
+</html>

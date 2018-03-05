@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML转义演示</title>
+</head>
+<body>
+转义(默认):{{ text1 }}<br>
+使用过滤器关闭转义:{{ text1|safe }}<br>
+使用标签关闭转义:{% autoescape off %}<h1>这是标签中的文本内容</h1>{% endautoescape %}<br>
+模板硬编码(固定部分): {{ data | default:"<h1>这是标签中的文本内容</h1>" }}<br>
+模板硬编码手动转义:{{ data | default:"&lt;h1&gt;这是标签中的文本内容&lt;/h1&gt;" }}
+</body>
+</html>

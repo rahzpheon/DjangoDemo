@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax请求登陆页面</title>
+    <style>
+        #show{
+            display:none;
+            color: red;
+        }
+    </style>
+    <script src="/static/js/jquery-1.12.4.min.js"></script>
+    <script>
+
+        $(document).ready(function () {
+
+            var $Btn = $('#btn'),
+                $User = $('input[name=username]'),
+                $Pwd = $('input[name=password]');
+
+            $Btn.click(function () {
+                var username = $User.val();
+                var password = $Pwd.val();
+{#                alert(username);#}
+                $.ajax({
+                    url:'/login_ajax_check',
+                    type: 'POST',
+                    data: {'username':username, 'password':password},
+                    dataType: 'json',
+                }).success(function (data) {
+                    console.log('haha');
+                    if (data['b'] == 1){
+                        location.href = '/index';
+                    } else {
+                        $('#show').text('登录失败').show();
+                    }
+                })
+            })
+        })
+    </script>
+</head>
+<body>
+    用户名：<input type="text" name="username"><br>
+    密码：<input type="password" name="password"><span id="show"></span><br>
+    <input type="button" id="btn" value="登陆">
+</body>
+</html>

@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="/index"></a>
+<a href="{% url 'booktest1:index' %}">反向解析生成首页</a><br>
+<a href="{% url 'booktest1:show_args' 10 20 %}">反向解析传递位置参数</a><br>
+<a href="{% url 'booktest1:show_kwargs' a=15 b=23 %}">反向解析传递关键字参数</a>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static from staticfiles %}
+<head>
+    <meta charset="UTF-8">
+    <title>地区信息</title>
+    <script src="{% static "js/jquery-1.12.4.min.js" %}"></script>
+    <script>
+        $(function () {
+        {#请求省信息#}
+        $.get('/get_prov',function (dic) {
+            for(var i=0; i<dic.data.length; i++){
+                atitle = dic.data[i][0];
+                aid = dic.data[i][1];
+{#                console.log(atitle,aid)#}
+                $("#prov").append("<option value='" + aid + "'>"+ atitle + "</option>");
+            }
+        })
+
+        {#请求市信息注册至事件change:下拉框选项被改变#}
+        $('#prov').change(function () {
+            aid = $(this).val()
+            $.get('/get_city?aid='+aid, function(dic){
+{#            $.get('/get_city'+aid, function (dic) {#}
+
+                $("#city").empty() {#清空内容再添加,首行提示信息要保留#}
+                $("#city").append("<option>---请选择城市---</option>")
+                $("#dist").empty() {#注意,重选省的时候县信息也要重置,去除旧值#}
+                $("#dist").append("<option>---请选择县区---</option>")
+
+                $.each(dic.data, function (i, item) {
+                     $("#city").append("<option value='" + item[1] + "'>"+ item[0] + "</option>");
+                })
+            })
+        })
+
+        {#请求县信息,同上#}
+            $('#city').change(function () {
+                aid = $(this).val()
+                $.get('/get_dist?aid='+aid, function (dic) {
+                    $('#dist').empty()
+                    $('#dist').append("<option>---请选择县区---</option>")
+                    $.each(dic.data, function (i, item) {
+                        $('#dist').append("<option value='"+ item[1] + "'>" + item[0] + "</option>")
+                    })
+                })
+            })
+    })
+
+    </script>
+</head>
+<body>
+    <select id="prov">
+        <option>---请选择省份---</option>
+    </select>
+    <select id="city">
+        <option>---请选择城市---</option>
+    </select>
+    <select id="dist">
+        <option>---请选择县区---</option>
+    </select>
+</body>
+</html>

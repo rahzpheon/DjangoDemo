@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登陆页面</title>
+</head>
+<body>
+    <form action="/login_check2" method="post">
+        用户名：<input type="text" name="username" value="{{ username }}" placeholder="请输入用户名"><br>
+        密码：<input type="password" name="password"><br>
+        记住用户名:<input type="checkbox" name="remember" {{ checked }}>
+        <input type="submit" value="登陆">
+    </form>
+</body>
+</html>

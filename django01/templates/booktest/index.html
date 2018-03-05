@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>索引页面</title>
+</head>
+<body>
+<h1>图书列表</h1>
+<ul>
+    {% for book in booklist %}
+    <li><a href="{{ book.id }}">{{ book.btitle }}</a></li>
+    {% empty %}
+    <li>当前没有任何图书。</li>
+    {% endfor %}
+</ul>
+</body>
+</html>

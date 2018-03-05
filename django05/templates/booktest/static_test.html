@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>静态文件路径配置</title>
+</head>
+<body>
+{% load static from staticfiles %}
+使用路径:<img src="/abc/img/5d.jpg"><br>
+使用static标签自动生成路径(使用前要导入):<img src="{% static 'img/5d.jpg' %}"><br>
+</body>
+</html>
+
+.clearfix::before, .clearfix::after{content:""; display:table;}
+.clearfix::after{clear:both;}
+.clearfix{zoom:1}

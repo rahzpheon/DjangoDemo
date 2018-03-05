@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模板标签演示</title>
+</head>
+<body>
+<h1>演示效果：根据id改变背景颜色</h1>
+<ul>
+    {% for book in books %}
+        {% if book.id <= 2 %}
+        <li style="background-color: red">{{ book.btitle }}</li>
+        {% elif book.id <= 4 %}
+        <li style="background-color: grey">{{ book.btitle }}</li>
+        {% else %}
+        <li style="background-color: deeppink">{{ book.btitle }}</li>
+        {% endif %}
+    {% endfor %}
+</ul>
+</body>
+</html>
