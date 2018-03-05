@@ -1,0 +1,2 @@
+# DjangoDemo
+for practing
